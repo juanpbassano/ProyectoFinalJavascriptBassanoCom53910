@@ -1,0 +1,44 @@
+{
+    "Productos": [
+        {
+            "nombre": "arroz",
+            "precio": 2000,
+            "stock": 10
+        },
+        {
+            "nombre": "fideos",
+            "precio": 1500,
+            "stock": 15
+        },
+        {
+            "nombre": "atun",
+            "precio": 3000,
+            "stock": 5
+        },
+        {
+            "nombre": "pan",
+            "precio": 2000,
+            "stock": 40
+        },
+        {
+            "nombre": "cafe",
+            "precio": 8500,
+            "stock": 20
+        },
+        {
+            "nombre": "cerveza",
+            "precio": 2200,
+            "stock": 12
+        },
+        {
+            "nombre": "queso",
+            "precio": 3200,
+            "stock": 15
+        },
+        {
+            "nombre": "aceitunas",
+            "precio": 1100,
+            "stock": 20
+        }
+    ]
+}

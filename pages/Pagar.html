@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Pagar|TerceraPreEntrega</title>
+</head>
+
+<body>
+    <main>
+        <form action="/" method="POST" id="register">
+            <h1>Pagar compra</h1>
+            <label class="lb" for="">Número de tarjeta</label>
+            <input class="inputR" type="number" name="number" placeholder="Numero de tarjeta"><br />
+            <label class="lb" for="">Nombre como figura en la tarjeta</label>
+            <input class="inputR" type="text" name="nombre" placeholder="Nombre y Apellidos"><br />
+            <label class="lb" for="">Fecha de expiracion</label>
+            <input class="inputR" type="date" name="date" placeholder="Fecha de vencimiento"><br />
+            <label class="lb" for="">CVC</label>
+            <input class="inputR" type="password" name="password" placeholder="Codigo de seguridad"><br />
+            <h3 id="pagarTotal">Total a pagar:</h3>
+            <button id="pagar" class="lgbtn" type="submit">
+                Pagar
+            </button>
+            <button class="lgbtn" type="reset">Limpiar</button>
+            <p></p>
+            <p>
+                <a href="principal.html">Seguir comprando</a>
+            </p>
+        </form>
+    </main>
+<script src="../js/pago.js"></script>
+
+</body>
+
+</html>

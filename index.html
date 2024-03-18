@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Registro|AutoServicio</title>
+</head>
+
+<body>
+    <main>
+        <form action="/" method="POST" id="register">
+            <h1>Proyecto final | AutoServicio</h1>
+            <h2>Registrate</h2>
+            <input id="usrR" class="inputR" type="text" name="username" placeholder="Nombre de usuario"><br />
+            <input id="nombreR" class="inputR" type="text" name="name" placeholder="Nombre"><br />
+            <input id="apellidoR" class="inputR" type="text" name="surname" placeholder="Apellidos"><br />
+            <input id="emailR" class="inputR" type="email" name="email" placeholder="Correo electr&oacute;nico"><br />
+            <input id="passR1" class="inputR" type="password" name="password" placeholder="Contrase&ntilde;a"><br />
+            <input id="passR2" class="inputR" type="password" name="password2" placeholder="Repite la Contrase&ntilde;a"><br />
+            <button id="entrarLG" class="lgbtn" type="submit">Entrar
+            </button>
+            <button class="lgbtn" type="reset">Limpiar</button>
+            <p>Ya tienes cuenta ?</p>
+            <p>
+                <a href="./pages/principal.html">Inicia Sesion</a>
+            </p>
+        </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/formulario.js"></script>
+</body>
+
+</html>

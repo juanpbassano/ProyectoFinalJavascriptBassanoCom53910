@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css">
+    <title>AutoServicio</title>
+</head>
+
+<body>
+    <div class="todo">
+        <header>
+            <h1>Proyecto final | AutoServicio</h1>
+            <form class="form" id="form-login">
+                <input class="inUsuario" type="text" placeholder="Usuario" id="user" name="user" />
+                <input class="inPass" type="password" placeholder="Contraseña" id="pass" name="pass" />
+                <div class="check" >
+                    <label for="check">Recordar</label>
+                    <input type="checkbox" id="check" name="check" />
+                    <p class="registrate">
+                        <a href="../index.html">Aún no sos Usuario? Registrate</a>
+                    </p>
+                </div>
+                <input type="submit" class="btn-login" value="Ingresar" name="enviar" id="enviarLog" />
+            </form>
+        </header>
+        <main>
+            <hr/>
+            <div>
+                <h2>Productos Disponibles:</h2>
+                <div class="contFiltrado">
+                    <form action="">
+                        <h3>Filtrar Productos</h3>
+                        <input type="text" name="ingreso" id="ingreso" />
+                        <button class="btnFiltrado" id="buscar">Buscar</button>
+                        <div id="filtrar">
+                        </div>
+                    </form>
+                    <button class="btnFiltrado" class="limpiar" id="limpiar">Limpiar filtrados</button>
+                </div>
+                <div class="pD" id="ProductosDisponibles"></div>
+            </div>
+            <hr/>
+            <section class="carrito">
+                <div>
+                    <h2>Carrito de compras</h2>
+                    <p id="total" class="pTotal">Total a pagar:</p>
+                    <div id="carrito" class="contCarrito">
+                    </div>
+                </div>
+                <div class="fCompra">
+                    <button id="btnlim" class="btnlim">Limpiar Carrito</button>
+                    <button id="btnFl" class="btnFl"><a href="../pages/Pagar.html">Finalizar compra</a></button>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>Script creado para presentacion de proyecto final de Javascript en Coderhouse</p>
+            <div>
+                <p>© Copyright 2024. Todos los Derechos Reservados. <br> Junin - Provincia de Buenos aires, Argentina
+                </p>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../js/main.js"></script>
+    </div>
+</body>
+
+</html>
