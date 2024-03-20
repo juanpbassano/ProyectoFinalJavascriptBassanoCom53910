@@ -103,8 +103,16 @@ function creadorDeBotonLogOut() {
     logoutBtn.addEventListener('click', () => {
         log = false;
         sessionStorage.removeItem('nuevoRegistro');
-        contenedorBtLog.remove();
+        contenedorBtLog.remove();    
     });
+    logoutBtn.addEventListener('mouseover', () => {
+        logoutBtn.style.transform = "scale(1.1)";
+        logoutBtn.style.transition = "transform 0.2s ease-in-out";
+        });
+    logoutBtn.addEventListener('mouseout', () => {
+        logoutBtn.style.transform = "scale(1)";
+        logoutBtn.style.transition = "transform 0.2s ease-in-out";
+        });
 }
 //-----------------------------------------------------------------------------------
 //Trae productos de la Base de datos
@@ -173,7 +181,7 @@ function mouseover(Producto) {
     card.addEventListener('mouseover', () => {
         card.style.boxShadow = "0.3125rem 0.5rem 0.625rem 0.0625rem rgba(77, 255, 0, 0.552)";
         card.style.transform = "scale(1.1)"; 
-        card.style.transition = "transform 0.2s ease"; // Agregar transición suave
+        card.style.transition = "transform 0.2s ease"; 
     });
     card.addEventListener('mouseout', () => {
         card.style.transform = "scale(1)"; 
@@ -208,6 +216,7 @@ if (log) {
             liEncontrado.innerHTML = bloqueHtml(encontrado);
             contenedor.append(liEncontrado);
             escucharAgregar(encontrado);
+            mouseover(encontrado)
             const limpiar = document.getElementById('limpiar');
             limpiar.addEventListener('click', () => {
                 liEncontrado.remove()

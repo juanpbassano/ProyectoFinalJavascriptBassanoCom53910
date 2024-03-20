@@ -18,9 +18,11 @@
             <label class="lb" for="">Nombre como figura en la tarjeta</label>
             <input class="inputR" type="text" name="nombre" placeholder="Nombre y Apellidos"><br />
             <label class="lb" for="">Fecha de expiracion</label>
-            <input class="inputR" type="date" name="date" placeholder="Fecha de vencimiento"><br />
+            <input class="inputR" type="text" name="date" placeholder="MM/AA de expiracion" maxlength="5"
+                pattern="\d{2}/\d{2}"><br />
             <label class="lb" for="">CVC</label>
-            <input class="inputR" type="password" name="password" placeholder="Codigo de seguridad"><br />
+            <input class="inputR" type="password" name="password" placeholder="Codigo de seguridad" maxlength="3"
+                pattern="\d{3}"><br />
             <h3 id="pagarTotal">Total a pagar:</h3>
             <button id="pagar" class="lgbtn" type="submit">
                 Pagar
@@ -32,7 +34,8 @@
             </p>
         </form>
     </main>
-<script src="../js/pago.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/pago.js"></script>
 
 </body>
 

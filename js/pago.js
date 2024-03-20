@@ -14,3 +14,15 @@ function totalAPagar(carrito) {
     pagarTotal.innerText = `Total a pagar: $${aPagar}`;
     return
 }
+
+const btnpagar = document.querySelector('#register');
+btnpagar.addEventListener('submit', (e) => {
+    e.preventDefault();
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Pago exitoso",
+        showConfirmButton: false,
+        timer: 1500
+    });
+})
