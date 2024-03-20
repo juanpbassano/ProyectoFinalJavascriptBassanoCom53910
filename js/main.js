@@ -140,7 +140,7 @@ function modificarStockYHtml(producto, stock, nombreP) {
 
 //Funcion que genera el bloque de html con los datos e ids especificos
 function bloqueHtml(Producto) {
-    return `<div class="card">
+    return `<div class="card" id="card-${Producto.nombre}">
                 <h3>${Producto.nombre.charAt(0).toUpperCase() + Producto.nombre.slice(1)}</h3>
                 <p>Precio:$${Producto.precio}</p>
                 <p id='${Producto.nombre.toLowerCase()}-stockDispo'>Stock disponible: ${Producto.stock}</p>
@@ -157,15 +157,31 @@ function bloqueHtml(Producto) {
 //inserta etiquetas listas al html con los productos
 function crearProductosAlHTML(array) {
     const contenedor = document.getElementById('ProductosDisponibles');
-    cargarCarritoDesdeLocal()
+    cargarCarritoDesdeLocal();
     array.forEach(Producto => {
         const nuevosPro = document.createElement('li');
         nuevosPro.innerHTML = bloqueHtml(Producto);
         contenedor.append(nuevosPro);
         escucharAgregar(Producto);
+        mouseover(Producto)
     })
     return
 }
+
+function mouseover(Producto) {
+    const card = document.querySelector(`#card-${Producto.nombre}`);
+    card.addEventListener('mouseover', () => {
+        card.style.boxShadow = "0.3125rem 0.5rem 0.625rem 0.0625rem rgba(77, 255, 0, 0.552)";
+        card.style.transform = "scale(1.1)"; 
+        card.style.transition = "transform 0.2s ease"; // Agregar transición suave
+    });
+    card.addEventListener('mouseout', () => {
+        card.style.transform = "scale(1)"; 
+        card.style.transition = "transform 0.2s ease";
+        card.style.boxShadow = "0.3125rem 0.5rem 0.625rem 0.0625rem rgba(183, 15, 255, 0.552)";
+    });
+}
+
 //filtrar producto
 function buscarProductos(arr, filtro) {
     if (log) {
