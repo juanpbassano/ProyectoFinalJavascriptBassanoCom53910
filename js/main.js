@@ -82,7 +82,7 @@ function login(inusuario, inPass) {
 datosUsuarioJSON = sessionStorage.getItem('nuevoRegistro'),
     datosUsuario = JSON.parse(datosUsuarioJSON);
 if (datosUsuario) {
-    const logJSON = datosUsuario.log;
+    const { log: logJSON } = datosUsuario //destructuring con alias 
     log = logJSON;
 }
 
@@ -103,16 +103,16 @@ function creadorDeBotonLogOut() {
     logoutBtn.addEventListener('click', () => {
         log = false;
         sessionStorage.removeItem('nuevoRegistro');
-        contenedorBtLog.remove();    
+        contenedorBtLog.remove();
     });
     logoutBtn.addEventListener('mouseover', () => {
         logoutBtn.style.transform = "scale(1.1)";
         logoutBtn.style.transition = "transform 0.2s ease-in-out";
-        });
+    });
     logoutBtn.addEventListener('mouseout', () => {
         logoutBtn.style.transform = "scale(1)";
         logoutBtn.style.transition = "transform 0.2s ease-in-out";
-        });
+    });
 }
 //-----------------------------------------------------------------------------------
 //Trae productos de la Base de datos
@@ -180,11 +180,11 @@ function mouseover(Producto) {
     const card = document.querySelector(`#card-${Producto.nombre}`);
     card.addEventListener('mouseover', () => {
         card.style.boxShadow = "0.3125rem 0.5rem 0.625rem 0.0625rem rgba(77, 255, 0, 0.552)";
-        card.style.transform = "scale(1.1)"; 
-        card.style.transition = "transform 0.2s ease"; 
+        card.style.transform = "scale(1.1)";
+        card.style.transition = "transform 0.2s ease";
     });
     card.addEventListener('mouseout', () => {
-        card.style.transform = "scale(1)"; 
+        card.style.transform = "scale(1)";
         card.style.transition = "transform 0.2s ease";
         card.style.boxShadow = "0.3125rem 0.5rem 0.625rem 0.0625rem rgba(183, 15, 255, 0.552)";
     });
@@ -400,3 +400,17 @@ function limpiarCarrito(carrito) {
 
 limpiarCarrito(carrito);
 
+const btnFinalizarCompra = document.querySelector('#btnFl');
+btnFinalizarCompra.addEventListener('click', () => {
+    if(carrito.length === 0){
+        Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Su carrito está vacio",
+            showConfirmButton: false,
+            timer: 1000
+        });
+    }else {
+        window.location.href = "../pages/Pagar.html";
+    }
+})

@@ -53,7 +53,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(140, 140, 140, 0.235);
+    background: #c3565652;
+    height: 100vw;
 }
 
 .inputR {
@@ -112,6 +113,9 @@ div {
     justify-content: center;
     align-items: center;
     display: flex;
+}
+.todo{
+    background: #c3565652;
 }
 
 .contFiltrado {
@@ -218,7 +222,7 @@ label {
     font-size: 1rem;
     width: 10rem;
     margin: .4rem;
-    background-color: #8d8c8c76;
+    background-color: #0191c687;
     border-radius: .425rem;
     box-shadow: 0.3125rem 0.5rem 0.625rem 0.0625rem rgba(0, 0, 0, 0.552);
 }
@@ -234,7 +238,6 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: .625rem;
 }
 
 footer p {
