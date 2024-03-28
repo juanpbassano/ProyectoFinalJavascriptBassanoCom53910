@@ -288,7 +288,6 @@ function cargarCarritoDesdeLocal() {
     }
 }
 
-
 //funcion para validar si hay stock sufiente antes de realizar la compra
 function validarStock(producto) {
     return (producto.stock <= 0) ? ( //utilizacion de operador ternario
@@ -322,7 +321,6 @@ function totalAPagar(carrito) {
     return aPagar
 }
 // llama a la funcion que crea los productos que estan en el array todosLosProductos.
-
 
 function crearCarritoHtml(Producto) {
     return `<div id="${Producto.Producto}-cardCarrito" class="cardCarrito">
@@ -358,48 +356,45 @@ function eliminarProducto(Producto) {
         carritoALocal(carrito);
     });
 }
-//funcion que elimina producto por producto agregado al carrito, devuelve el stock a todos los productos y modifica el html
+//funcion que elimina todos los productos agregados al carrito, devuelve el stock a todos los productos y modifica el html
 function limpiarCarrito(carrito) {
-    if (log) {
-            const btnlimpiar = document.getElementById('btnlim');
-            btnlimpiar.addEventListener('click', () => {
+    const btnlimpiar = document.getElementById('btnlim');
+    btnlimpiar.addEventListener('click', () => {
+        Swal.fire({
+            title: "Estas seguro de lipiar el carrito?",
+            text: "Se borraran todos los productos seleccionados!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, vaciar carrito!"
+        }).then((result) => {
+            if (result.isConfirmed) {
                 Swal.fire({
-                    title: "Estas seguro de lipiar el carrito?",
-                    text: "Se borraran todos los productos seleccionados!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Si, vaciar carrito!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "Eliminado!",
-                            text: "Los Productos fueron eliminados.",
-                            icon: "success"
-                        });
-                        carrito.forEach((producto) => {
-                            const cardCarrito = document.querySelector(`.${producto.Producto}-li`);
-                            cardCarrito.remove();
-                            const productoEncontrado = obtenerProducto(producto.Producto);
-                            productoEncontrado.stock += producto.Unidades;
-                            modificarStockYHtml(productoEncontrado, productoEncontrado.stock, producto.Producto);
-                        });
-                        const contCarrito = document.getElementById('carrito')
-                        while (contCarrito.firstChild) {
-                            contCarrito.removeChild(contCarrito.firstChild);
-                        }
-                        aPagar = 0;
-                        const parrafo = document.getElementById("total");
-                        parrafo.innerText = `Total a pagar: $${aPagar}`;
-                        localStorage.removeItem("carrito");
-                        carrito.length = 0;
-                    }
+                    title: "Eliminado!",
+                    text: "Los Productos fueron eliminados.",
+                    icon: "success"
                 });
-            });
-        }
-    }
-
+                carrito.forEach((producto) => {
+                    const cardCarrito = document.querySelector(`.${producto.Producto}-li`);
+                    cardCarrito.remove();
+                    const productoEncontrado = obtenerProducto(producto.Producto);
+                    productoEncontrado.stock += producto.Unidades;
+                    modificarStockYHtml(productoEncontrado, productoEncontrado.stock, producto.Producto);
+                });
+                const contCarrito = document.getElementById('carrito')
+                while (contCarrito.firstChild) {
+                    contCarrito.removeChild(contCarrito.firstChild);
+                }
+                aPagar = 0;
+                const parrafo = document.getElementById("total");
+                parrafo.innerText = `Total a pagar: $${aPagar}`;
+                localStorage.removeItem("carrito");
+                carrito.length = 0;
+            }
+        });
+    });
+}
 
 limpiarCarrito(carrito);
 
