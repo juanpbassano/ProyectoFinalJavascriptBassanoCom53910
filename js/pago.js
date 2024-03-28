@@ -1,3 +1,4 @@
+
 function cargarCarritoDesdeLocal() {
     const carritoDesdeLocal = localStorage.getItem('carrito');
     if (carritoDesdeLocal) {
@@ -18,6 +19,9 @@ function totalAPagar(carrito) {
 const btnpagar = document.querySelector('#register');
 btnpagar.addEventListener('submit', (e) => {
     e.preventDefault();
+    localStorage.removeItem("carrito");
+    const pagarTotal = document.getElementById('pagarTotal');
+    pagarTotal.innerText = `Total a pagar: $ 0`;
     Swal.fire({
         position: "center",
         icon: "success",

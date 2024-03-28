@@ -118,7 +118,7 @@ function creadorDeBotonLogOut() {
 //Trae productos de la Base de datos
 //-----------------------------------------------------------------------------------
 fetch("../db/db.json")
-    .then((res) => res.json())
+    .then((response) => response.json())
     .then((data) => {
         const { Productos } = data;
         todosLosProductos = Productos;
@@ -360,49 +360,53 @@ function eliminarProducto(Producto) {
 }
 //funcion que elimina producto por producto agregado al carrito, devuelve el stock a todos los productos y modifica el html
 function limpiarCarrito(carrito) {
-    const btnlimpiar = document.getElementById('btnlim');
-    btnlimpiar.addEventListener('click', () => {
-        Swal.fire({
-            title: "Estas seguro de lipiar el carrito?",
-            text: "Se borraran todos los productos seleccionados!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, vaciar carrito!"
-        }).then((result) => {
-            if (result.isConfirmed) {
+    if (log) {
+            const btnlimpiar = document.getElementById('btnlim');
+            btnlimpiar.addEventListener('click', () => {
                 Swal.fire({
-                    title: "Eliminado!",
-                    text: "Los Productos fueron eliminados.",
-                    icon: "success"
+                    title: "Estas seguro de lipiar el carrito?",
+                    text: "Se borraran todos los productos seleccionados!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, vaciar carrito!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Eliminado!",
+                            text: "Los Productos fueron eliminados.",
+                            icon: "success"
+                        });
+                        carrito.forEach((producto) => {
+                            const cardCarrito = document.querySelector(`.${producto.Producto}-li`);
+                            cardCarrito.remove();
+                            const productoEncontrado = obtenerProducto(producto.Producto);
+                            productoEncontrado.stock += producto.Unidades;
+                            modificarStockYHtml(productoEncontrado, productoEncontrado.stock, producto.Producto);
+                        });
+                        const contCarrito = document.getElementById('carrito')
+                        while (contCarrito.firstChild) {
+                            contCarrito.removeChild(contCarrito.firstChild);
+                        }
+                        aPagar = 0;
+                        const parrafo = document.getElementById("total");
+                        parrafo.innerText = `Total a pagar: $${aPagar}`;
+                        localStorage.removeItem("carrito");
+                        carrito.length = 0;
+                    }
                 });
-                carrito.forEach((producto) => {
-                    const cardCarrito = document.querySelector(`.${producto.Producto}-li`);
-                    cardCarrito.remove();
-                    const productoEncontrado = obtenerProducto(producto.Producto);
-                    productoEncontrado.stock += producto.Unidades;
-                    modificarStockYHtml(productoEncontrado, productoEncontrado.stock, producto.Producto);
-                });
-                const contCarrito = document.getElementById('carrito')
-                while (contCarrito.firstChild) {
-                    contCarrito.removeChild(contCarrito.firstChild);
-                }
-                aPagar = 0;
-                const parrafo = document.getElementById("total");
-                parrafo.innerText = `Total a pagar: $${aPagar}`;
-                localStorage.removeItem("carrito");
-                carrito.length = 0;
-            }
-        });
-    });
-}
+            });
+        }
+    }
+
 
 limpiarCarrito(carrito);
 
+
 const btnFinalizarCompra = document.querySelector('#btnFl');
 btnFinalizarCompra.addEventListener('click', () => {
-    if(carrito.length === 0){
+    if (carrito.length === 0) {
         Swal.fire({
             position: "center",
             icon: "warning",
@@ -410,7 +414,7 @@ btnFinalizarCompra.addEventListener('click', () => {
             showConfirmButton: false,
             timer: 1000
         });
-    }else {
+    } else {
         window.location.href = "../pages/Pagar.html";
     }
 })
